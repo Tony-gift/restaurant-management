@@ -1,0 +1,246 @@
+<!--pages/recruit/application/application.wxml-->
+<view class="container">
+  <view class="form-header">
+    <text class="page-title">入职申请表</text>
+    <text class="form-desc">请如实填写个人信息，我们将在5个工作日内完成审核</text>
+  </view>
+  
+  <form bindsubmit="submitApplication">
+    <!-- 基本信息 -->
+    <view class="form-section">
+      <text class="section-title">基本信息</text>
+      
+      <view class="form-group">
+        <text class="form-label">姓名 *</text>
+        <input class="form-input" 
+               name="name"
+               placeholder="请输入真实姓名" 
+               value="{{formData.name}}" 
+               bindinput="onInput" 
+               data-field="name"/>
+      </view>
+      
+      <view class="form-group">
+        <text class="form-label">性别 *</text>
+        <radio-group name="gender" bindchange="onRadioChange" data-field="gender">
+          <label class="radio-item">
+            <radio value="男" checked="{{formData.gender === '男'}}"/>男
+          </label>
+          <label class="radio-item">
+            <radio value="女" checked="{{formData.gender === '女'}}"/>女
+          </label>
+        </radio-group>
+      </view>
+      
+      <view class="form-group">
+        <text class="form-label">出生日期 *</text>
+        <picker mode="date" 
+                bindchange="onDateChange" 
+                value="{{formData.birthday}}"
+                data-field="birthday">
+          <view class="picker-input">
+            {{formData.birthday || '请选择出生日期'}}
+          </view>
+        </picker>
+      </view>
+      
+      <view class="form-group">
+        <text class="form-label">身份证号 *</text>
+        <input class="form-input" 
+               name="idCard"
+               placeholder="请输入身份证号" 
+               value="{{formData.idCard}}" 
+               bindinput="onInput" 
+               data-field="idCard"/>
+      </view>
+      
+      <view class="form-group">
+        <text class="form-label">联系电话 *</text>
+        <input class="form-input" 
+               name="phone"
+               type="number"
+               placeholder="请输入联系电话" 
+               value="{{formData.phone}}" 
+               bindinput="onInput" 
+               data-field="phone"/>
+      </view>
+      
+      <view class="form-group">
+        <text class="form-label">电子邮箱 *</text>
+        <input class="form-input" 
+               name="email"
+               placeholder="请输入电子邮箱" 
+               value="{{formData.email}}" 
+               bindinput="onInput" 
+               data-field="email"/>
+      </view>
+      
+      <view class="form-group">
+        <text class="form-label">现居地址 *</text>
+        <input class="form-input" 
+               name="address"
+               placeholder="请输入现居地址" 
+               value="{{formData.address}}" 
+               bindinput="onInput" 
+               data-field="address"/>
+      </view>
+    </view>
+    
+    <!-- 求职信息 -->
+    <view class="form-section">
+      <text class="section-title">求职信息</text>
+      
+      <view class="form-group">
+        <text class="form-label">应聘职位 *</text>
+        <picker bindchange="onPickerChange" 
+                value="{{positionIndex}}" 
+                range="{{positions}}"
+                data-field="position">
+          <view class="picker-input">
+            {{positions[positionIndex] || '请选择应聘职位'}}
+          </view>
+        </picker>
+      </view>
+      
+      <view class="form-group">
+        <text class="form-label">期望薪资 *</text>
+        <picker bindchange="onPickerChange" 
+                value="{{salaryIndex}}" 
+                range="{{salaryRanges}}"
+                data-field="expectedSalary">
+          <view class="picker-input">
+            {{salaryRanges[salaryIndex] || '请选择期望薪资'}}
+          </view>
+        </picker>
+      </view>
+      
+      <view class="form-group">
+        <text class="form-label">可入职时间 *</text>
+        <picker mode="date" 
+                bindchange="onDateChange" 
+                value="{{formData.availableDate}}"
+                data-field="availableDate">
+          <view class="picker-input">
+            {{formData.availableDate || '请选择可入职时间'}}
+          </view>
+        </picker>
+      </view>
+    </view>
+    
+    <!-- 教育背景 -->
+    <view class="form-section">
+      <text class="section-title">教育背景</text>
+      
+      <view class="form-group">
+        <text class="form-label">最高学历 *</text>
+        <picker bindchange="onPickerChange" 
+                value="{{educationIndex}}" 
+                range="{{educationLevels}}"
+                data-field="education">
+          <view class="picker-input">
+            {{educationLevels[educationIndex] || '请选择最高学历'}}
+          </view>
+        </picker>
+      </view>
+      
+      <view class="form-group">
+        <text class="form-label">毕业院校 *</text>
+        <input class="form-input" 
+               name="school"
+               placeholder="请输入毕业院校" 
+               value="{{formData.school}}" 
+               bindinput="onInput" 
+               data-field="school"/>
+      </view>
+      
+      <view class="form-group">
+        <text class="form-label">专业 *</text>
+        <input class="form-input" 
+               name="major"
+               placeholder="请输入专业" 
+               value="{{formData.major}}" 
+               bindinput="onInput" 
+               data-field="major"/>
+      </view>
+      
+      <view class="form-group">
+        <text class="form-label">毕业时间 *</text>
+        <picker mode="date" 
+                fields="month"
+                bindchange="onDateChange" 
+                value="{{formData.graduationDate}}"
+                data-field="graduationDate">
+          <view class="picker-input">
+            {{formData.graduationDate || '请选择毕业时间'}}
+          </view>
+        </picker>
+      </view>
+    </view>
+    
+    <!-- 工作经验 -->
+    <view class="form-section">
+      <text class="section-title">工作经验</text>
+      
+      <view class="form-group">
+        <text class="form-label">工作年限</text>
+        <picker bindchange="onPickerChange" 
+                value="{{experienceIndex}}" 
+                range="{{experienceYears}}"
+                data-field="workExperience">
+          <view class="picker-input">
+            {{experienceYears[experienceIndex] || '请选择工作年限'}}
+          </view>
+        </picker>
+      </view>
+      
+      <view class="form-group">
+        <text class="form-label">工作经历</text>
+        <textarea class="form-textarea" 
+                  name="workHistory"
+                  placeholder="请描述您的工作经历，包括公司名称、职位、工作内容等" 
+                  value="{{formData.workHistory}}" 
+                  bindinput="onInput" 
+                  data-field="workHistory"
+                  maxlength="300">
+        </textarea>
+      </view>
+      
+      <view class="form-group">
+        <text class="form-label">专业技能</text>
+        <textarea class="form-textarea" 
+                  name="skills"
+                  placeholder="请描述您的专业技能和特长" 
+                  value="{{formData.skills}}" 
+                  bindinput="onInput" 
+                  data-field="skills"
+                  maxlength="200">
+        </textarea>
+      </view>
+    </view>
+    
+    <!-- 其他信息 -->
+    <view class="form-section">
+      <text class="section-title">其他信息</text>
+      
+      <view class="form-group">
+        <text class="form-label">自我介绍</text>
+        <textarea class="form-textarea" 
+                  name="selfIntroduction"
+                  placeholder="请简单介绍一下自己" 
+                  value="{{formData.selfIntroduction}}" 
+                  bindinput="onInput" 
+                  data-field="selfIntroduction"
+                  maxlength="200">
+        </textarea>
+      </view>
+    </view>
+    
+    <view class="form-footer">
+      <button class="btn-primary submit-btn" 
+              formType="submit" 
+              disabled="{{!canSubmit}}">
+        提交申请
+      </button>
+    </view>
+  </form>
+</view>

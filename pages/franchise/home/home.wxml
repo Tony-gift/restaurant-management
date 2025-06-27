@@ -1,0 +1,76 @@
+<!--pages/franchise/home/home.wxml-->
+<view class="container">
+  <view class="user-info">
+    <image class="avatar" src="/images/avatar.png" mode="aspectFit"></image>
+    <view class="user-details">
+      <text class="username">{{userInfo.username}}</text>
+      <text class="user-type">加盟商</text>
+    </view>
+    <text class="logout-btn" bindtap="logout">退出</text>
+  </view>
+  
+  <view class="status-card">
+    <view class="status-header">
+      <text class="status-title">加盟状态</text>
+    </view>
+    <view class="status-content">
+      <view class="status-indicator {{franchiseStatus.status}}">
+        <text class="status-text">{{franchiseStatus.text}}</text>
+      </view>
+      <text class="status-desc">{{franchiseStatus.description}}</text>
+    </view>
+  </view>
+  
+  <view class="function-grid">
+    <view class="function-item" bindtap="navigateTo" data-page="application">
+      <image class="function-icon" src="/images/application.png" mode="aspectFit"></image>
+      <text class="function-text">加盟申请</text>
+      <text class="function-desc">填写加盟申请表</text>
+    </view>
+    
+    <view class="function-item" bindtap="navigateTo" data-page="progress">
+      <image class="function-icon" src="/images/progress.png" mode="aspectFit"></image>
+      <text class="function-text">申请进度</text>
+      <text class="function-desc">查看审核进度</text>
+    </view>
+  </view>
+  
+  <view class="info-section">
+    <view class="section-header">
+      <text class="section-title">加盟须知</text>
+    </view>
+    <view class="info-list">
+      <view class="info-item">
+        <view class="info-icon">📋</view>
+        <view class="info-content">
+          <text class="info-title">申请条件</text>
+          <text class="info-desc">具有独立法人资格，注册资金不少于50万</text>
+        </view>
+      </view>
+      
+      <view class="info-item">
+        <view class="info-icon">💰</view>
+        <view class="info-content">
+          <text class="info-title">加盟费用</text>
+          <text class="info-desc">加盟费10万，保证金5万，首批进货30万</text>
+        </view>
+      </view>
+      
+      <view class="info-item">
+        <view class="info-icon">📍</view>
+        <view class="info-content">
+          <text class="info-title">选址要求</text>
+          <text class="info-desc">商业区域，面积不少于100平米，人流量大</text>
+        </view>
+      </view>
+      
+      <view class="info-item">
+        <view class="info-icon">📞</view>
+        <view class="info-content">
+          <text class="info-title">联系我们</text>
+          <text class="info-desc">客服热线：400-123-4567</text>
+        </view>
+      </view>
+    </view>
+  </view>
+</view>

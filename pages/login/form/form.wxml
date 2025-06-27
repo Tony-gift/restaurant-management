@@ -1,0 +1,39 @@
+<!--pages/login/form/form.wxml-->
+<view class="container">
+  <view class="login-header">
+    <text class="page-title">{{typeText}}登录</text>
+  </view>
+  
+  <!-- 登录页面顶部Logo图片 -->
+  <view class="logo-container">
+    <image class="logo-image" src="/images/logo.png" mode="aspectFit"></image>
+  </view>
+  
+  <view class="login-form">
+    <view class="form-group">
+      <text class="form-label">用户名</text>
+      <input class="form-input" 
+             placeholder="请输入用户名" 
+             value="{{username}}" 
+             bindinput="onUsernameInput"/>
+    </view>
+    
+    <view class="form-group">
+      <text class="form-label">密码</text>
+      <input class="form-input" 
+             placeholder="请输入密码" 
+             password="{{!showPassword}}" 
+             value="{{password}}" 
+             bindinput="onPasswordInput"/>
+      <text class="password-toggle" bindtap="togglePassword">
+        {{showPassword ? '隐藏' : '显示'}}
+      </text>
+    </view>
+    
+    <button class="btn-primary login-btn" bindtap="handleLogin">登录</button>
+    
+    <view class="form-footer">
+      <text class="link-text" bindtap="goToRegister">还没有账号？立即注册</text>
+    </view>
+  </view>
+</view>

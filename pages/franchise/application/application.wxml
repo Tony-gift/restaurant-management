@@ -1,0 +1,184 @@
+<!--pages/franchise/application/application.wxml-->
+<view class="container">
+  <view class="form-header">
+    <text class="page-title">加盟申请表</text>
+    <text class="form-desc">请如实填写以下信息，我们将在3个工作日内审核</text>
+  </view>
+  
+  <form bindsubmit="submitApplication">
+    <!-- 基本信息 -->
+    <view class="form-section">
+      <text class="section-title">基本信息</text>
+      
+      <view class="form-group">
+        <text class="form-label">申请人姓名 *</text>
+        <input class="form-input" 
+               name="applicantName"
+               placeholder="请输入申请人姓名" 
+               value="{{formData.applicantName}}" 
+               bindinput="onInput" 
+               data-field="applicantName"/>
+      </view>
+      
+      <view class="form-group">
+        <text class="form-label">身份证号 *</text>
+        <input class="form-input" 
+               name="idCard"
+               placeholder="请输入身份证号" 
+               value="{{formData.idCard}}" 
+               bindinput="onInput" 
+               data-field="idCard"/>
+      </view>
+      
+      <view class="form-group">
+        <text class="form-label">联系电话 *</text>
+        <input class="form-input" 
+               name="phone"
+               type="number"
+               placeholder="请输入联系电话" 
+               value="{{formData.phone}}" 
+               bindinput="onInput" 
+               data-field="phone"/>
+      </view>
+      
+      <view class="form-group">
+        <text class="form-label">电子邮箱</text>
+        <input class="form-input" 
+               name="email"
+               placeholder="请输入电子邮箱" 
+               value="{{formData.email}}" 
+               bindinput="onInput" 
+               data-field="email"/>
+      </view>
+    </view>
+    
+    <!-- 公司信息 -->
+    <view class="form-section">
+      <text class="section-title">公司信息</text>
+      
+      <view class="form-group">
+        <text class="form-label">公司名称 *</text>
+        <input class="form-input" 
+               name="companyName"
+               placeholder="请输入公司名称" 
+               value="{{formData.companyName}}" 
+               bindinput="onInput" 
+               data-field="companyName"/>
+      </view>
+      
+      <view class="form-group">
+        <text class="form-label">统一社会信用代码 *</text>
+        <input class="form-input" 
+               name="creditCode"
+               placeholder="请输入统一社会信用代码" 
+               value="{{formData.creditCode}}" 
+               bindinput="onInput" 
+               data-field="creditCode"/>
+      </view>
+      
+      <view class="form-group">
+        <text class="form-label">注册资金 *</text>
+        <input class="form-input" 
+               name="registeredCapital"
+               type="digit"
+               placeholder="请输入注册资金（万元）" 
+               value="{{formData.registeredCapital}}" 
+               bindinput="onInput" 
+               data-field="registeredCapital"/>
+      </view>
+      
+      <view class="form-group">
+        <text class="form-label">公司地址 *</text>
+        <input class="form-input" 
+               name="companyAddress"
+               placeholder="请输入公司地址" 
+               value="{{formData.companyAddress}}" 
+               bindinput="onInput" 
+               data-field="companyAddress"/>
+      </view>
+    </view>
+    
+    <!-- 店铺信息 -->
+    <view class="form-section">
+      <text class="section-title">预计店铺信息</text>
+      
+      <view class="form-group">
+        <text class="form-label">店铺位置 *</text>
+        <input class="form-input" 
+               name="storeLocation"
+               placeholder="请输入店铺位置" 
+               value="{{formData.storeLocation}}" 
+               bindinput="onInput" 
+               data-field="storeLocation"/>
+      </view>
+      
+      <view class="form-group">
+        <text class="form-label">店铺面积 *</text>
+        <input class="form-input" 
+               name="storeArea"
+               type="digit"
+               placeholder="请输入店铺面积（平米）" 
+               value="{{formData.storeArea}}" 
+               bindinput="onInput" 
+               data-field="storeArea"/>
+      </view>
+      
+      <view class="form-group">
+        <text class="form-label">预计开业时间</text>
+        <picker mode="date" 
+                bindchange="onDateChange" 
+                value="{{formData.expectedOpenDate}}"
+                data-field="expectedOpenDate">
+          <view class="picker-input">
+            {{formData.expectedOpenDate || '请选择预计开业时间'}}
+          </view>
+        </picker>
+      </view>
+    </view>
+    
+    <!-- 其他信息 -->
+    <view class="form-section">
+      <text class="section-title">其他信息</text>
+      
+      <view class="form-group">
+        <text class="form-label">从事相关行业经验</text>
+        <textarea class="form-textarea" 
+                  name="experience"
+                  placeholder="请描述您在相关行业的经验" 
+                  value="{{formData.experience}}" 
+                  bindinput="onInput" 
+                  data-field="experience"
+                  maxlength="200">
+        </textarea>
+      </view>
+      
+      <view class="form-group">
+        <text class="form-label">加盟理由</text>
+        <textarea class="form-textarea" 
+                  name="reason"
+                  placeholder="请说明您的加盟理由和计划" 
+                  value="{{formData.reason}}" 
+                  bindinput="onInput" 
+                  data-field="reason"
+                  maxlength="200">
+        </textarea>
+      </view>
+    </view>
+    
+    <view class="form-footer">
+      <checkbox-group bindchange="onAgreementChange">
+        <label class="agreement-item">
+          <checkbox value="agree" checked="{{agreed}}"/>
+          <text class="agreement-text">我已阅读并同意</text>
+          <text class="agreement-link" bindtap="viewAgreement">《加盟协议》</text>
+        </label>
+      </checkbox-group>
+      
+      <button class="btn-primary submit-btn" 
+              formType="submit" 
+              disabled="{{!canSubmit}}">
+        提交申请
+      </button>
+    </view>
+  </form>
+</view>

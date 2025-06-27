@@ -1,0 +1,78 @@
+<!--pages/login/login.wxml-->
+<view class="container">
+  <!-- 顶部Logo和标题 -->
+  <view class="header">
+    <view class="logo-container">
+      <image class="logo-image" src="/images/logo.png" mode="aspectFit"></image>
+    </view>
+    <text class="page-title">企业管理系统</text>
+    <text class="subtitle">请选择身份并登录</text>
+  </view>
+  
+  <!-- 身份选择卡片 -->
+  <view class="user-type-cards">
+    <view class="type-card {{selectedUserType === 'employee' ? 'active' : ''}}" 
+          bindtap="selectUserType" data-type="employee">
+      <image class="card-icon" src="/images/employee.png" mode="aspectFit"></image>
+      <text class="card-title">员工</text>
+      <text class="card-desc">考勤管理</text>
+    </view>
+    
+    <view class="type-card {{selectedUserType === 'franchise' ? 'active' : ''}}" 
+          bindtap="selectUserType" data-type="franchise">
+      <image class="card-icon" src="/images/franchise.png" mode="aspectFit"></image>
+      <text class="card-title">加盟商</text>
+      <text class="card-desc">申请管理</text>
+    </view>
+    
+    <view class="type-card {{selectedUserType === 'recruit' ? 'active' : ''}}" 
+          bindtap="selectUserType" data-type="recruit">
+      <image class="card-icon" src="/images/recruit.png" mode="aspectFit"></image>
+      <text class="card-title">求职者</text>
+      <text class="card-desc">入职申请</text>
+    </view>
+  </view>
+  
+  <!-- 登录表单 -->
+  <view class="login-form">
+    <view class="form-header">
+      <text class="form-title">{{selectedUserType ? typeText + '登录' : '请先选择身份'}}</text>
+    </view>
+    
+    <view class="form-container">
+      <view class="form-group">
+        <text class="form-label">用户名</text>
+        <input class="form-input" 
+               placeholder="请输入用户名" 
+               value="{{username}}" 
+               disabled="{{!selectedUserType}}"
+               bindinput="onUsernameInput"/>
+      </view>
+      
+      <view class="form-group">
+        <text class="form-label">密码</text>
+        <view class="password-container">
+          <input class="form-input" 
+                 placeholder="请输入密码" 
+                 password="{{!showPassword}}" 
+                 value="{{password}}" 
+                 disabled="{{!selectedUserType}}"
+                 bindinput="onPasswordInput"/>
+          <text class="password-toggle" bindtap="togglePassword" wx:if="{{selectedUserType}}">
+            {{showPassword ? '隐藏' : '显示'}}
+          </text>
+        </view>
+      </view>
+      
+      <button class="btn-primary login-btn {{!selectedUserType ? 'disabled' : ''}}" 
+              bindtap="handleLogin" 
+              disabled="{{!selectedUserType}}">
+        {{selectedUserType ? '登录' : '请先选择身份'}}
+      </button>
+      
+      <view class="form-footer">
+        <text class="link-text" bindtap="goToRegister">还没有账号？立即注册</text>
+      </view>
+    </view>
+  </view>
+</view>

@@ -1,0 +1,141 @@
+<!--pages/employee/profile/profile.wxml-->
+<view class="container">
+  <view class="profile-header">
+    <view class="avatar-section">
+      <image class="profile-avatar" src="{{userProfile.avatar || '/images/avatar.png'}}" mode="aspectFit"></image>
+      <button class="change-avatar-btn" bindtap="changeAvatar">更换头像</button>
+    </view>
+    <view class="basic-info">
+      <text class="name">{{userProfile.name}}</text>
+      <text class="position">{{userProfile.position}}</text>
+      <text class="employee-id">工号：{{userProfile.employeeId}}</text>
+    </view>
+  </view>
+  
+  <view class="profile-sections">
+    <!-- 基本信息 -->
+    <view class="section">
+      <view class="section-header" bindtap="toggleSection" data-section="basic">
+        <text class="section-title">基本信息</text>
+        <text class="section-arrow {{expandedSections.basic ? 'expanded' : ''}}">></text>
+      </view>
+      <view class="section-content {{expandedSections.basic ? 'show' : ''}}">
+        <view class="info-row">
+          <text class="info-label">姓名</text>
+          <text class="info-value">{{userProfile.name}}</text>
+        </view>
+        <view class="info-row">
+          <text class="info-label">性别</text>
+          <text class="info-value">{{userProfile.gender}}</text>
+        </view>
+        <view class="info-row">
+          <text class="info-label">出生日期</text>
+          <text class="info-value">{{userProfile.birthday}}</text>
+        </view>
+        <view class="info-row">
+          <text class="info-label">身份证号</text>
+          <text class="info-value">{{userProfile.idCard}}</text>
+        </view>
+        <view class="info-row">
+          <text class="info-label">手机号码</text>
+          <text class="info-value">{{userProfile.phone}}</text>
+        </view>
+        <view class="info-row">
+          <text class="info-label">邮箱地址</text>
+          <text class="info-value">{{userProfile.email}}</text>
+        </view>
+        <view class="info-row">
+          <text class="info-label">现居地址</text>
+          <text class="info-value">{{userProfile.address}}</text>
+        </view>
+      </view>
+    </view>
+    
+    <!-- 工作信息 -->
+    <view class="section">
+      <view class="section-header" bindtap="toggleSection" data-section="work">
+        <text class="section-title">工作信息</text>
+        <text class="section-arrow {{expandedSections.work ? 'expanded' : ''}}">></text>
+      </view>
+      <view class="section-content {{expandedSections.work ? 'show' : ''}}">
+        <view class="info-row">
+          <text class="info-label">工号</text>
+          <text class="info-value">{{userProfile.employeeId}}</text>
+        </view>
+        <view class="info-row">
+          <text class="info-label">所属部门</text>
+          <text class="info-value">{{userProfile.department}}</text>
+        </view>
+        <view class="info-row">
+          <text class="info-label">职位</text>
+          <text class="info-value">{{userProfile.position}}</text>
+        </view>
+        <view class="info-row">
+          <text class="info-label">入职日期</text>
+          <text class="info-value">{{userProfile.hireDate}}</text>
+        </view>
+        <view class="info-row">
+          <text class="info-label">工作年限</text>
+          <text class="info-value">{{userProfile.workYears}}年</text>
+        </view>
+        <view class="info-row">
+          <text class="info-label">直属领导</text>
+          <text class="info-value">{{userProfile.supervisor}}</text>
+        </view>
+        <view class="info-row">
+          <text class="info-label">员工状态</text>
+          <text class="info-value status {{userProfile.status}}">{{userProfile.statusText}}</text>
+        </view>
+      </view>
+    </view>
+    
+    <!-- 教育背景 -->
+    <view class="section">
+      <view class="section-header" bindtap="toggleSection" data-section="education">
+        <text class="section-title">教育背景</text>
+        <text class="section-arrow {{expandedSections.education ? 'expanded' : ''}}">></text>
+      </view>
+      <view class="section-content {{expandedSections.education ? 'show' : ''}}">
+        <view class="education-item" wx:for="{{userProfile.education}}" wx:key="index">
+          <view class="education-header">
+            <text class="school-name">{{item.school}}</text>
+            <text class="education-time">{{item.period}}</text>
+          </view>
+          <view class="education-detail">
+            <text class="major">{{item.major}}</text>
+            <text class="degree">{{item.degree}}</text>
+          </view>
+        </view>
+      </view>
+    </view>
+    
+    <!-- 紧急联系人 -->
+    <view class="section">
+      <view class="section-header" bindtap="toggleSection" data-section="emergency">
+        <text class="section-title">紧急联系人</text>
+        <text class="section-arrow {{expandedSections.emergency ? 'expanded' : ''}}">></text>
+      </view>
+      <view class="section-content {{expandedSections.emergency ? 'show' : ''}}">
+        <view class="contact-item" wx:for="{{userProfile.emergencyContacts}}" wx:key="index">
+          <view class="info-row">
+            <text class="info-label">姓名</text>
+            <text class="info-value">{{item.name}}</text>
+          </view>
+          <view class="info-row">
+            <text class="info-label">关系</text>
+            <text class="info-value">{{item.relationship}}</text>
+          </view>
+          <view class="info-row">
+            <text class="info-label">电话</text>
+            <text class="info-value">{{item.phone}}</text>
+          </view>
+        </view>
+      </view>
+    </view>
+  </view>
+  
+  <view class="action-buttons">
+    <button class="btn-secondary edit-btn" bindtap="editProfile">编辑资料</button>
+    <button class="btn-primary change-password-btn" bindtap="changePassword">修改密码</button>
+  </view>
+</view>

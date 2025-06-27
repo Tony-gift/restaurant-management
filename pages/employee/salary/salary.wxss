@@ -1,0 +1,220 @@
+/* pages/employee/salary/salary.wxss */
+.container {
+  padding: 40rpx;
+  background-color: #f5f5f5;
+  min-height: 100vh;
+}
+
+.current-salary {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  border-radius: 20rpx;
+  padding: 50rpx 40rpx;
+  margin-bottom: 40rpx;
+  color: white;
+  text-align: center;
+}
+
+.salary-header {
+  margin-bottom: 30rpx;
+}
+
+.salary-title {
+  display: block;
+  font-size: 28rpx;
+  margin-bottom: 10rpx;
+  opacity: 0.9;
+}
+
+.salary-month {
+  font-size: 24rpx;
+  opacity: 0.8;
+}
+
+.salary-amount {
+  margin-bottom: 30rpx;
+}
+
+.amount-text {
+  display: block;
+  font-size: 56rpx;
+  font-weight: bold;
+  margin-bottom: 10rpx;
+}
+
+.amount-label {
+  font-size: 24rpx;
+  opacity: 0.8;
+}
+
+.salary-status {
+  text-align: center;
+}
+
+.status-text {
+  padding: 10rpx 30rpx;
+  border-radius: 25rpx;
+  font-size: 24rpx;
+}
+
+.status-text.paid {
+  background-color: rgba(39, 174, 96, 0.3);
+  border: 1rpx solid rgba(39, 174, 96, 0.5);
+}
+
+.status-text.pending {
+  background-color: rgba(241, 196, 15, 0.3);
+  border: 1rpx solid rgba(241, 196, 15, 0.5);
+}
+
+.salary-detail, .salary-history, .salary-stats {
+  margin-bottom: 40rpx;
+}
+
+.section-title {
+  font-size: 32rpx;
+  font-weight: bold;
+  color: #2c3e50;
+  display: block;
+  margin-bottom: 30rpx;
+}
+
+.detail-card {
+  background: white;
+  border-radius: 16rpx;
+  padding: 40rpx;
+  box-shadow: 0 4rpx 12rpx rgba(0,0,0,0.1);
+}
+
+.detail-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20rpx 0;
+}
+
+.detail-label {
+  font-size: 28rpx;
+  color: #2c3e50;
+}
+
+.detail-value {
+  font-size: 28rpx;
+  color: #2c3e50;
+  font-weight: bold;
+}
+
+.detail-value.total {
+  color: #3498db;
+}
+
+.detail-value.deduction {
+  color: #e74c3c;
+}
+
+.detail-row.final .detail-label {
+  font-size: 32rpx;
+  font-weight: bold;
+  color: #2c3e50;
+}
+
+.final-amount {
+  font-size: 36rpx;
+  color: #27ae60 !important;
+  font-weight: bold;
+}
+
+.detail-separator {
+  height: 1rpx;
+  background-color: #e0e0e0;
+  margin: 10rpx 0;
+}
+
+.history-list {
+  background: white;
+  border-radius: 16rpx;
+  overflow: hidden;
+  box-shadow: 0 4rpx 12rpx rgba(0,0,0,0.1);
+}
+
+.history-item {
+  padding: 30rpx;
+  border-bottom: 1rpx solid #e0e0e0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.history-item:last-child {
+  border-bottom: none;
+}
+
+.history-info {
+  flex: 1;
+}
+
+.history-month {
+  display: block;
+  font-size: 28rpx;
+  color: #2c3e50;
+  font-weight: bold;
+  margin-bottom: 8rpx;
+}
+
+.history-amount {
+  font-size: 26rpx;
+  color: #3498db;
+  font-weight: bold;
+}
+
+.history-status {
+  display: flex;
+  align-items: center;
+  gap: 20rpx;
+}
+
+.status-tag {
+  padding: 8rpx 16rpx;
+  border-radius: 15rpx;
+  font-size: 22rpx;
+  color: white;
+}
+
+.status-tag.paid {
+  background-color: #27ae60;
+}
+
+.status-tag.pending {
+  background-color: #f39c12;
+}
+
+.arrow {
+  font-size: 24rpx;
+  color: #bdc3c7;
+}
+
+.stats-card {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20rpx;
+}
+
+.stat-item {
+  background: white;
+  border-radius: 16rpx;
+  padding: 40rpx 30rpx;
+  text-align: center;
+  box-shadow: 0 4rpx 12rpx rgba(0,0,0,0.1);
+}
+
+.stat-value {
+  display: block;
+  font-size: 32rpx;
+  font-weight: bold;
+  color: #3498db;
+  margin-bottom: 15rpx;
+}
+
+.stat-label {
+  font-size: 24rpx;
+  color: #7f8c8d;
+}

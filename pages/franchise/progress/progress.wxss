@@ -1,0 +1,280 @@
+/* pages/franchise/progress/progress.wxss */
+.container {
+  padding: 40rpx;
+  background-color: #f5f5f5;
+  min-height: 100vh;
+}
+
+.progress-header {
+  text-align: center;
+  margin-bottom: 40rpx;
+}
+
+.page-title {
+  font-size: 36rpx;
+  font-weight: bold;
+  color: #2c3e50;
+  display: block;
+  margin-bottom: 15rpx;
+}
+
+.application-id {
+  font-size: 26rpx;
+  color: #7f8c8d;
+}
+
+.current-status {
+  margin-bottom: 40rpx;
+}
+
+.status-card {
+  background: white;
+  border-radius: 20rpx;
+  padding: 40rpx;
+  display: flex;
+  align-items: center;
+  box-shadow: 0 8rpx 24rpx rgba(0,0,0,0.1);
+}
+
+.status-icon {
+  width: 100rpx;
+  height: 100rpx;
+  border-radius: 50rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-right: 30rpx;
+  font-size: 48rpx;
+}
+
+.status-icon.pending {
+  background-color: #fff3cd;
+  color: #856404;
+}
+
+.status-icon.reviewing {
+  background-color: #cce5ff;
+  color: #0066cc;
+}
+
+.status-icon.approved {
+  background-color: #d4edda;
+  color: #155724;
+}
+
+.status-icon.rejected {
+  background-color: #f8d7da;
+  color: #721c24;
+}
+
+.icon-text {
+  font-size: 48rpx;
+  font-weight: bold;
+}
+
+.status-info {
+  flex: 1;
+}
+
+.status-title {
+  display: block;
+  font-size: 32rpx;
+  font-weight: bold;
+  color: #2c3e50;
+  margin-bottom: 10rpx;
+}
+
+.status-desc {
+  font-size: 26rpx;
+  color: #7f8c8d;
+  line-height: 1.5;
+}
+
+.no-application {
+  background: white;
+  border-radius: 20rpx;
+  padding: 80rpx 40rpx;
+  text-align: center;
+  box-shadow: 0 4rpx 12rpx rgba(0,0,0,0.1);
+}
+
+.empty-icon {
+  width: 120rpx;
+  height: 120rpx;
+  margin-bottom: 30rpx;
+  opacity: 0.5;
+}
+
+.empty-text {
+  font-size: 28rpx;
+  color: #7f8c8d;
+  display: block;
+  margin-bottom: 40rpx;
+}
+
+.apply-btn {
+  padding: 20rpx 60rpx;
+  font-size: 28rpx;
+}
+
+.progress-timeline, .application-detail {
+  margin-bottom: 40rpx;
+}
+
+.section-title {
+  font-size: 32rpx;
+  font-weight: bold;
+  color: #2c3e50;
+  display: block;
+  margin-bottom: 30rpx;
+}
+
+.timeline {
+  background: white;
+  border-radius: 16rpx;
+  padding: 40rpx 30rpx;
+  box-shadow: 0 4rpx 12rpx rgba(0,0,0,0.1);
+}
+
+.timeline-item {
+  display: flex;
+  align-items: flex-start;
+  position: relative;
+  padding-bottom: 40rpx;
+}
+
+.timeline-item:last-child {
+  padding-bottom: 0;
+}
+
+.timeline-item::after {
+  content: '';
+  position: absolute;
+  left: 35rpx;
+  top: 70rpx;
+  bottom: -40rpx;
+  width: 2rpx;
+  background-color: #e0e0e0;
+}
+
+.timeline-item:last-child::after {
+  display: none;
+}
+
+.timeline-item.completed::after {
+  background-color: #27ae60;
+}
+
+.timeline-dot {
+  width: 70rpx;
+  height: 70rpx;
+  border-radius: 35rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-right: 30rpx;
+  position: relative;
+  z-index: 1;
+}
+
+.timeline-item.completed .timeline-dot {
+  background-color: #27ae60;
+}
+
+.timeline-item.current .timeline-dot {
+  background-color: #3498db;
+}
+
+.timeline-item.pending .timeline-dot {
+  background-color: #e0e0e0;
+}
+
+.dot-text {
+  color: white;
+  font-size: 32rpx;
+  font-weight: bold;
+}
+
+.dot-number {
+  color: white;
+  font-size: 28rpx;
+  font-weight: bold;
+}
+
+.dot-circle {
+  width: 20rpx;
+  height: 20rpx;
+  border-radius: 10rpx;
+  background-color: white;
+}
+
+.timeline-content {
+  flex: 1;
+  padding-top: 10rpx;
+}
+
+.step-title {
+  display: block;
+  font-size: 28rpx;
+  font-weight: bold;
+  color: #2c3e50;
+  margin-bottom: 10rpx;
+}
+
+.step-desc {
+  display: block;
+  font-size: 24rpx;
+  color: #7f8c8d;
+  line-height: 1.5;
+  margin-bottom: 10rpx;
+}
+
+.step-time {
+  font-size: 22rpx;
+  color: #95a5a6;
+}
+
+.detail-card {
+  background: white;
+  border-radius: 16rpx;
+  padding: 40rpx;
+  box-shadow: 0 4rpx 12rpx rgba(0,0,0,0.1);
+  margin-bottom: 30rpx;
+}
+
+.detail-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20rpx 0;
+  border-bottom: 1rpx solid #f8f9fa;
+}
+
+.detail-item:last-child {
+  border-bottom: none;
+}
+
+.detail-label {
+  font-size: 26rpx;
+  color: #7f8c8d;
+  width: 200rpx;
+}
+
+.detail-value {
+  font-size: 26rpx;
+  color: #2c3e50;
+  flex: 1;
+  text-align: right;
+}
+
+.action-buttons {
+  display: flex;
+  gap: 20rpx;
+}
+
+.cancel-btn, .contact-btn {
+  flex: 1;
+  padding: 25rpx;
+  font-size: 28rpx;
+  font-weight: bold;
+}

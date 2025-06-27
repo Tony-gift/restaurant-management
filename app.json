@@ -1,0 +1,26 @@
+{
+  "pages":[
+    "pages/login/login",
+    "pages/login/form/form",
+    "pages/register/register",
+    "pages/employee/home/home",
+    "pages/employee/attendance/attendance",
+    "pages/employee/leave/leave",
+    "pages/employee/salary/salary",
+    "pages/employee/profile/profile",
+    "pages/franchise/home/home",
+    "pages/franchise/application/application",
+    "pages/franchise/progress/progress",
+    "pages/recruit/home/home",
+    "pages/recruit/application/application",
+    "pages/recruit/status/status"
+  ],
+  "window":{
+    "backgroundTextStyle":"light",
+    "navigationBarBackgroundColor": "#2c3e50",
+    "navigationBarTitleText": "企业管理系统",
+    "navigationBarTextStyle":"white"
+  },
+  "style": "v2",
+  "sitemapLocation": "sitemap.json"
+}

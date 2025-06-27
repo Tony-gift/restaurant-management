@@ -1,0 +1,103 @@
+<!--pages/recruit/status/status.wxml-->
+<view class="container">
+  <view class="status-header">
+    <text class="page-title">申请状态</text>
+    <text class="application-id">申请编号：{{applicationInfo.id || 'N/A'}}</text>
+  </view>
+  
+  <view class="current-status" wx:if="{{applicationInfo.id}}">
+    <view class="status-card">
+      <view class="status-icon {{applicationInfo.status}}">
+        <text class="icon-text">{{getStatusIcon(applicationInfo.status)}}</text>
+      </view>
+      <view class="status-info">
+        <text class="status-title">{{getStatusText(applicationInfo.status)}}</text>
+        <text class="status-desc">{{getStatusDesc(applicationInfo.status)}}</text>
+        <text class="next-step" wx:if="{{getNextStep(applicationInfo.status)}}">
+          下一步：{{getNextStep(applicationInfo.status)}}
+        </text>
+      </view>
+    </view>
+  </view>
+  
+  <view class="no-application" wx:if="{{!applicationInfo.id}}">
+    <image class="empty-icon" src="/images/empty.png" mode="aspectFit"></image>
+    <text class="empty-text">您还没有提交入职申请</text>
+    <button class="btn-primary apply-btn" bindtap="goToApplication">立即申请</button>
+  </view>
+  
+  <view class="status-timeline" wx:if="{{applicationInfo.id}}">
+    <text class="section-title">申请流程</text>
+    
+    <view class="timeline">
+      <view class="timeline-item {{item.completed ? 'completed' : (item.current ? 'current' : 'pending')}}" 
+            wx:for="{{statusSteps}}" wx:key="step">
+        <view class="timeline-dot">
+          <text class="dot-text" wx:if="{{item.completed}}">✓</text>
+          <text class="dot-number" wx:elif="{{item.current}}">{{index + 1}}</text>
+          <view class="dot-circle" wx:else></view>
+        </view>
+        <view class="timeline-content">
+          <text class="step-title">{{item.title}}</text>
+          <text class="step-desc">{{item.description}}</text>
+          <text class="step-time" wx:if="{{item.completedTime}}">{{item.completedTime}}</text>
+          <text class="step-note" wx:if="{{item.note}}">{{item.note}}</text>
+        </view>
+      </view>
+    </view>
+  </view>
+  
+  <view class="application-summary" wx:if="{{applicationInfo.id}}">
+    <text class="section-title">申请信息</text>
+    
+    <view class="summary-card">
+      <view class="summary-item">
+        <text class="summary-label">姓名</text>
+        <text class="summary-value">{{applicationInfo.name}}</text>
+      </view>
+      <view class="summary-item">
+        <text class="summary-label">应聘职位</text>
+        <text class="summary-value">{{applicationInfo.position}}</text>
+      </view>
+      <view class="summary-item">
+        <text class="summary-label">期望薪资</text>
+        <text class="summary-value">{{applicationInfo.expectedSalary}}</text>
+      </view>
+      <view class="summary-item">
+        <text class="summary-label">联系电话</text>
+        <text class="summary-value">{{applicationInfo.phone}}</text>
+      </view>
+      <view class="summary-item">
+        <text class="summary-label">可入职时间</text>
+        <text class="summary-value">{{applicationInfo.availableDate}}</text>
+      </view>
+      <view class="summary-item">
+        <text class="summary-label">提交时间</text>
+        <text class="summary-value">{{applicationInfo.submitTime}}</text>
+      </view>
+    </view>
+    
+    <view class="action-buttons" wx:if="{{applicationInfo.status === 'pending' || applicationInfo.status === 'reviewing'}}">
+      <button class="btn-secondary withdraw-btn" bindtap="withdrawApplication">撤回申请</button>
+      <button class="btn-primary contact-btn" bindtap="contactHR">联系HR</button>
+    </view>
+    
+    <view class="interview-info" wx:if="{{applicationInfo.status === 'interview'}}">
+      <view class="interview-card">
+        <text class="interview-title">面试通知</text>
+        <view class="interview-detail">
+          <text class="detail-item">面试时间：2024年6月30日 14:00</text>
+          <text class="detail-item">面试地点：公司会议室A</text>
+          <text class="detail-item">面试官：技术总监 王先生</text>
+          <text class="detail-item">联系电话：010-12345678</text>
+        </view>
+        <view class="interview-tips">
+          <text class="tips-title">面试提醒：</text>
+          <text class="tips-text">• 请提前15分钟到达</text>
+          <text class="tips-text">• 请携带个人简历和相关证书</text>
+          <text class="tips-text">• 着装整洁，保持良好形象</text>
+        </view>
+      </view>
+    </view>
+  </view>
+</view>

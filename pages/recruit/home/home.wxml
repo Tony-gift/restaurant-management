@@ -1,0 +1,89 @@
+<!--pages/recruit/home/home.wxml-->
+<view class="container">
+  <view class="user-info">
+    <image class="avatar" src="/images/avatar.png" mode="aspectFit"></image>
+    <view class="user-details">
+      <text class="username">{{userInfo.username}}</text>
+      <text class="user-type">求职者</text>
+    </view>
+    <text class="logout-btn" bindtap="logout">退出</text>
+  </view>
+  
+  <view class="status-card">
+    <view class="status-header">
+      <text class="status-title">申请状态</text>
+    </view>
+    <view class="status-content">
+      <view class="status-indicator {{recruitStatus.status}}">
+        <text class="status-text">{{recruitStatus.text}}</text>
+      </view>
+      <text class="status-desc">{{recruitStatus.description}}</text>
+    </view>
+  </view>
+  
+  <view class="function-grid">
+    <view class="function-item" bindtap="navigateTo" data-page="application">
+      <image class="function-icon" src="/images/application.png" mode="aspectFit"></image>
+      <text class="function-text">入职申请</text>
+      <text class="function-desc">填写入职申请表</text>
+    </view>
+    
+    <view class="function-item" bindtap="navigateTo" data-page="status">
+      <image class="function-icon" src="/images/status.png" mode="aspectFit"></image>
+      <text class="function-text">申请状态</text>
+      <text class="function-desc">查看申请进度</text>
+    </view>
+  </view>
+  
+  <view class="job-section">
+    <view class="section-header">
+      <text class="section-title">热门职位</text>
+    </view>
+    <view class="job-list">
+      <view class="job-item" wx:for="{{jobList}}" wx:key="id" bindtap="viewJobDetail" data-job="{{item}}">
+        <view class="job-header">
+          <text class="job-title">{{item.title}}</text>
+          <text class="job-salary">{{item.salary}}</text>
+        </view>
+        <view class="job-info">
+          <text class="job-department">{{item.department}}</text>
+          <text class="job-location">{{item.location}}</text>
+        </view>
+        <view class="job-tags">
+          <text class="job-tag" wx:for="{{item.tags}}" wx:key="*this">{{item}}</text>
+        </view>
+        <view class="job-footer">
+          <text class="job-time">发布时间：{{item.publishTime}}</text>
+          <text class="job-arrow">></text>
+        </view>
+      </view>
+    </view>
+  </view>
+  
+  <view class="company-info">
+    <view class="section-header">
+      <text class="section-title">公司介绍</text>
+    </view>
+    <view class="company-card">
+      <image class="company-logo" src="/images/company-logo.png" mode="aspectFit"></image>
+      <view class="company-content">
+        <text class="company-name">科技有限公司</text>
+        <text class="company-desc">一家专注于创新科技的现代化企业，致力于为客户提供优质的产品和服务。</text>
+        <view class="company-stats">
+          <view class="stat-item">
+            <text class="stat-number">500+</text>
+            <text class="stat-label">员工数量</text>
+          </view>
+          <view class="stat-item">
+            <text class="stat-number">15</text>
+            <text class="stat-label">成立年限</text>
+          </view>
+          <view class="stat-item">
+            <text class="stat-number">50+</text>
+            <text class="stat-label">在招职位</text>
+          </view>
+        </view>
+      </view>
+    </view>
+  </view>
+</view>

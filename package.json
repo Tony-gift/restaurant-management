@@ -1,0 +1,28 @@
+{
+  "name": "enterprise-management-miniprogram",
+  "version": "1.0.0",
+  "description": "企业管理系统微信小程序 - 包含员工管理、加盟管理和入职申请功能",
+  "main": "app.js",
+  "scripts": {
+    "dev": "echo '请使用微信开发者工具打开此项目进行开发和调试'",
+    "build": "echo '请使用微信开发者工具进行项目构建和上传'"
+  },
+  "keywords": [
+    "微信小程序",
+    "miniprogram",
+    "企业管理",
+    "employee-management",
+    "franchise",
+    "recruitment"
+  ],
+  "author": "Developer",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/your-username/enterprise-management-miniprogram.git"
+  },
+  "bugs": {
+    "url": "https://github.com/your-username/enterprise-management-miniprogram/issues"
+  },
+  "homepage": "https://github.com/your-username/enterprise-management-miniprogram#readme"
+}

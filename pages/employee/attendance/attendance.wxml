@@ -1,0 +1,68 @@
+<!--pages/employee/attendance/attendance.wxml-->
+<view class="container">
+  <view class="attendance-header">
+    <text class="page-title">考勤打卡</text>
+    <text class="current-time">{{currentTime}}</text>
+  </view>
+  
+  <view class="punch-section">
+    <view class="punch-card">
+      <text class="punch-title">今日打卡</text>
+      <view class="punch-status">
+        <text class="status-text" style="color: {{punchInTime ? '#27ae60' : '#e74c3c'}}">
+          上班：{{punchInTime || '未打卡'}}
+        </text>
+        <text class="status-text" style="color: {{punchOutTime ? '#27ae60' : '#e74c3c'}}">
+          下班：{{punchOutTime || '未打卡'}}
+        </text>
+      </view>
+      
+      <button class="punch-btn {{punchInTime && punchOutTime ? 'disabled' : ''}}" 
+              bindtap="handlePunch" 
+              disabled="{{punchInTime && punchOutTime}}">
+        {{getPunchButtonText()}}
+      </button>
+    </view>
+  </view>
+  
+  <view class="stats-section">
+    <text class="section-title">本月统计</text>
+    <view class="stats-grid">
+      <view class="stat-item">
+        <text class="stat-number">{{monthStats.workDays}}</text>
+        <text class="stat-label">工作天数</text>
+      </view>
+      <view class="stat-item">
+        <text class="stat-number">{{monthStats.lateDays}}</text>
+        <text class="stat-label">迟到次数</text>
+      </view>
+      <view class="stat-item">
+        <text class="stat-number">{{monthStats.leaveDays}}</text>
+        <text class="stat-label">请假天数</text>
+      </view>
+      <view class="stat-item">
+        <text class="stat-number">{{monthStats.overtimeHours}}</text>
+        <text class="stat-label">加班小时</text>
+      </view>
+    </view>
+  </view>
+  
+  <view class="history-section">
+    <text class="section-title">打卡记录</text>
+    <view class="history-list">
+      <view class="history-item" wx:for="{{attendanceHistory}}" wx:key="date">
+        <view class="history-date">
+          <text class="date-text">{{item.date}}</text>
+          <text class="day-text">{{item.day}}</text>
+        </view>
+        <view class="history-times">
+          <text class="time-text">上班：{{item.punchIn || '--:--'}}</text>
+          <text class="time-text">下班：{{item.punchOut || '--:--'}}</text>
+        </view>
+        <view class="history-status">
+          <text class="status-tag {{item.status}}">{{item.statusText}}</text>
+        </view>
+      </view>
+    </view>
+  </view>
+</view>

@@ -1,0 +1,98 @@
+<!--pages/employee/salary/salary.wxml-->
+<view class="container">
+  <view class="current-salary">
+    <view class="salary-header">
+      <text class="salary-title">本月工资</text>
+      <text class="salary-month">{{currentMonth}}</text>
+    </view>
+    <view class="salary-amount">
+      <text class="amount-text">¥{{currentSalary.total}}</text>
+      <text class="amount-label">实发工资</text>
+    </view>
+    <view class="salary-status">
+      <text class="status-text {{currentSalary.status}}">{{currentSalary.statusText}}</text>
+    </view>
+  </view>
+  
+  <view class="salary-detail">
+    <text class="section-title">工资明细</text>
+    <view class="detail-card">
+      <view class="detail-row">
+        <text class="detail-label">基本工资</text>
+        <text class="detail-value">¥{{currentSalary.basic}}</text>
+      </view>
+      <view class="detail-row">
+        <text class="detail-label">绩效奖金</text>
+        <text class="detail-value">¥{{currentSalary.bonus}}</text>
+      </view>
+      <view class="detail-row">
+        <text class="detail-label">加班费</text>
+        <text class="detail-value">¥{{currentSalary.overtime}}</text>
+      </view>
+      <view class="detail-row">
+        <text class="detail-label">津贴补助</text>
+        <text class="detail-value">¥{{currentSalary.allowance}}</text>
+      </view>
+      <view class="detail-separator"></view>
+      <view class="detail-row">
+        <text class="detail-label">应发工资</text>
+        <text class="detail-value total">¥{{currentSalary.gross}}</text>
+      </view>
+      <view class="detail-row">
+        <text class="detail-label">个人所得税</text>
+        <text class="detail-value deduction">-¥{{currentSalary.tax}}</text>
+      </view>
+      <view class="detail-row">
+        <text class="detail-label">社保公积金</text>
+        <text class="detail-value deduction">-¥{{currentSalary.insurance}}</text>
+      </view>
+      <view class="detail-row">
+        <text class="detail-label">其他扣除</text>
+        <text class="detail-value deduction">-¥{{currentSalary.otherDeduction}}</text>
+      </view>
+      <view class="detail-separator"></view>
+      <view class="detail-row final">
+        <text class="detail-label">实发工资</text>
+        <text class="detail-value final-amount">¥{{currentSalary.total}}</text>
+      </view>
+    </view>
+  </view>
+  
+  <view class="salary-history">
+    <text class="section-title">历史工资</text>
+    <view class="history-list">
+      <view class="history-item" wx:for="{{salaryHistory}}" wx:key="month" bindtap="viewDetail" data-month="{{item.month}}">
+        <view class="history-info">
+          <text class="history-month">{{item.month}}</text>
+          <text class="history-amount">¥{{item.total}}</text>
+        </view>
+        <view class="history-status">
+          <text class="status-tag {{item.status}}">{{item.statusText}}</text>
+          <text class="arrow">></text>
+        </view>
+      </view>
+    </view>
+  </view>
+  
+  <view class="salary-stats">
+    <text class="section-title">年度统计</text>
+    <view class="stats-card">
+      <view class="stat-item">
+        <text class="stat-value">¥{{yearStats.total}}</text>
+        <text class="stat-label">年度总收入</text>
+      </view>
+      <view class="stat-item">
+        <text class="stat-value">¥{{yearStats.average}}</text>
+        <text class="stat-label">月平均工资</text>
+      </view>
+      <view class="stat-item">
+        <text class="stat-value">¥{{yearStats.tax}}</text>
+        <text class="stat-label">年度缴税</text>
+      </view>
+      <view class="stat-item">
+        <text class="stat-value">¥{{yearStats.insurance}}</text>
+        <text class="stat-label">社保公积金</text>
+      </view>
+    </view>
+  </view>
+</view>

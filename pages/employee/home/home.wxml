@@ -1,0 +1,45 @@
+<!--pages/employee/home/home.wxml-->
+<view class="container">
+  <view class="user-info">
+    <image class="avatar" src="/images/avatar.png" mode="aspectFit"></image>
+    <view class="user-details">
+      <text class="username">{{userInfo.username}}</text>
+      <text class="user-type">员工</text>
+    </view>
+    <text class="logout-btn" bindtap="logout">退出</text>
+  </view>
+  
+  <view class="function-grid">
+    <view class="function-item" bindtap="navigateTo" data-page="attendance">
+      <image class="function-icon" src="/images/attendance.png" mode="aspectFit"></image>
+      <text class="function-text">考勤打卡</text>
+    </view>
+    
+    <view class="function-item" bindtap="navigateTo" data-page="leave">
+      <image class="function-icon" src="/images/leave.png" mode="aspectFit"></image>
+      <text class="function-text">请假申请</text>
+    </view>
+    
+    <view class="function-item" bindtap="navigateTo" data-page="salary">
+      <image class="function-icon" src="/images/salary.png" mode="aspectFit"></image>
+      <text class="function-text">工资查询</text>
+    </view>
+    
+    <view class="function-item" bindtap="navigateTo" data-page="profile">
+      <image class="function-icon" src="/images/profile.png" mode="aspectFit"></image>
+      <text class="function-text">个人档案</text>
+    </view>
+  </view>
+  
+  <view class="notice-section">
+    <view class="section-header">
+      <text class="section-title">最新通知</text>
+    </view>
+    <view class="notice-list">
+      <view class="notice-item" wx:for="{{notices}}" wx:key="index">
+        <text class="notice-title">{{item.title}}</text>
+        <text class="notice-time">{{item.time}}</text>
+      </view>
+    </view>
+  </view>
+</view>

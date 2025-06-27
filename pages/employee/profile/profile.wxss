@@ -1,0 +1,195 @@
+/* pages/employee/profile/profile.wxss */
+.container {
+  padding: 0 0 40rpx 0;
+  background-color: #f5f5f5;
+  min-height: 100vh;
+}
+
+.profile-header {
+  background: linear-gradient(135deg, #3498db 0%, #2980b9 100%);
+  padding: 60rpx 40rpx 40rpx;
+  display: flex;
+  align-items: center;
+  color: white;
+}
+
+.avatar-section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-right: 40rpx;
+}
+
+.profile-avatar {
+  width: 120rpx;
+  height: 120rpx;
+  border-radius: 60rpx;
+  margin-bottom: 20rpx;
+  border: 4rpx solid rgba(255,255,255,0.3);
+}
+
+.change-avatar-btn {
+  font-size: 22rpx;
+  padding: 10rpx 20rpx;
+  background: rgba(255,255,255,0.2);
+  color: white;
+  border: 1rpx solid rgba(255,255,255,0.3);
+  border-radius: 20rpx;
+}
+
+.basic-info {
+  flex: 1;
+}
+
+.name {
+  display: block;
+  font-size: 36rpx;
+  font-weight: bold;
+  margin-bottom: 10rpx;
+}
+
+.position {
+  display: block;
+  font-size: 28rpx;
+  margin-bottom: 8rpx;
+  opacity: 0.9;
+}
+
+.employee-id {
+  font-size: 24rpx;
+  opacity: 0.8;
+}
+
+.profile-sections {
+  padding: 40rpx;
+}
+
+.section {
+  background: white;
+  border-radius: 16rpx;
+  margin-bottom: 20rpx;
+  overflow: hidden;
+  box-shadow: 0 4rpx 12rpx rgba(0,0,0,0.1);
+}
+
+.section-header {
+  padding: 30rpx;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1rpx solid #e0e0e0;
+}
+
+.section-title {
+  font-size: 28rpx;
+  font-weight: bold;
+  color: #2c3e50;
+}
+
+.section-arrow {
+  font-size: 24rpx;
+  color: #bdc3c7;
+  transition: transform 0.3s ease;
+}
+
+.section-arrow.expanded {
+  transform: rotate(90deg);
+}
+
+.section-content {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.3s ease;
+}
+
+.section-content.show {
+  max-height: 2000rpx;
+}
+
+.info-row {
+  padding: 25rpx 30rpx;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1rpx solid #f8f9fa;
+}
+
+.info-row:last-child {
+  border-bottom: none;
+}
+
+.info-label {
+  font-size: 26rpx;
+  color: #7f8c8d;
+  width: 200rpx;
+}
+
+.info-value {
+  font-size: 26rpx;
+  color: #2c3e50;
+  flex: 1;
+  text-align: right;
+}
+
+.info-value.status.active {
+  color: #27ae60;
+}
+
+.info-value.status.inactive {
+  color: #e74c3c;
+}
+
+.education-item, .contact-item {
+  padding: 20rpx 30rpx;
+  border-bottom: 1rpx solid #f8f9fa;
+}
+
+.education-item:last-child, .contact-item:last-child {
+  border-bottom: none;
+}
+
+.education-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 15rpx;
+}
+
+.school-name {
+  font-size: 28rpx;
+  font-weight: bold;
+  color: #2c3e50;
+}
+
+.education-time {
+  font-size: 24rpx;
+  color: #7f8c8d;
+}
+
+.education-detail {
+  display: flex;
+  justify-content: space-between;
+}
+
+.major {
+  font-size: 26rpx;
+  color: #3498db;
+}
+
+.degree {
+  font-size: 26rpx;
+  color: #7f8c8d;
+}
+
+.action-buttons {
+  padding: 0 40rpx;
+  display: flex;
+  gap: 20rpx;
+}
+
+.edit-btn, .change-password-btn {
+  flex: 1;
+  padding: 25rpx;
+  font-size: 28rpx;
+  font-weight: bold;
+}

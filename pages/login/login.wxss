@@ -1,0 +1,244 @@
+/* pages/login/login.wxss */
+.container {
+  padding: 40rpx;
+  background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+  min-height: 100vh;
+}
+
+/* 头部区域 */
+.header {
+  text-align: center;
+  margin-bottom: 60rpx;
+}
+
+.logo-container {
+  margin-bottom: 30rpx;
+}
+
+.logo-image {
+  width: 160rpx;
+  height: 160rpx;
+  border-radius: 20rpx;
+}
+
+.page-title {
+  color: #2c3e50;
+  font-size: 48rpx;
+  font-weight: bold;
+  display: block;
+  margin-bottom: 15rpx;
+}
+
+.subtitle {
+  color: #495057;
+  font-size: 28rpx;
+  display: block;
+}
+
+/* 身份选择卡片 */
+.user-type-cards {
+  display: flex;
+  flex-direction: row;
+  gap: 20rpx;
+  margin-bottom: 40rpx;
+  justify-content: space-between;
+}
+
+.type-card {
+  background: white;
+  border-radius: 15rpx;
+  padding: 30rpx 20rpx;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  box-shadow: 0 6rpx 18rpx rgba(0,0,0,0.08);
+  transition: all 0.3s ease;
+  flex: 1;
+  border: 3rpx solid #e9ecef;
+}
+
+.type-card.active {
+  border-color: #3498db;
+  box-shadow: 0 8rpx 24rpx rgba(52, 152, 219, 0.3);
+  transform: translateY(-5rpx);
+}
+
+.type-card:active {
+  transform: scale(0.95);
+}
+
+.card-icon {
+  width: 50rpx;
+  height: 50rpx;
+  margin-bottom: 15rpx;
+}
+
+.card-title {
+  font-size: 28rpx;
+  font-weight: bold;
+  color: #2c3e50;
+  margin-bottom: 8rpx;
+  text-align: center;
+}
+
+.card-desc {
+  font-size: 22rpx;
+  color: #7f8c8d;
+  text-align: center;
+}
+
+/* 登录表单区域 */
+.login-form {
+  background: white;
+  border-radius: 20rpx;
+  overflow: hidden;
+  box-shadow: 0 8rpx 24rpx rgba(0,0,0,0.08);
+}
+
+.form-header {
+  background: linear-gradient(135deg, #3498db 0%, #2980b9 100%);
+  padding: 30rpx;
+  text-align: center;
+}
+
+.form-title {
+  color: white;
+  font-size: 32rpx;
+  font-weight: bold;
+}
+
+.form-container {
+  padding: 40rpx;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.form-group {
+  margin-bottom: 30rpx;
+}
+
+.form-label {
+  color: #2c3e50;
+  font-size: 28rpx;
+  font-weight: bold;
+  margin-bottom: 15rpx;
+  display: block;
+}
+
+.form-input {
+  width: 100%;
+  padding: 25rpx;
+  border: 2rpx solid #e0e0e0;
+  border-radius: 12rpx;
+  font-size: 28rpx;
+  box-sizing: border-box;
+  background: white;
+  line-height: normal;
+  height: auto;
+  min-height: 80rpx;
+}
+
+.form-input:focus {
+  border-color: #3498db;
+  outline: none;
+}
+
+/* placeholder样式 */
+.form-input::-webkit-input-placeholder {
+  color: #999;
+  font-size: 28rpx;
+}
+
+/* 兼容不同浏览器的placeholder样式 */
+.form-input::placeholder {
+  color: #999;
+  font-size: 28rpx;
+  opacity: 1;
+}
+
+.form-input::-moz-placeholder {
+  color: #999;
+  font-size: 28rpx;
+  opacity: 1;
+}
+
+.form-input:-ms-input-placeholder {
+  color: #999;
+  font-size: 28rpx;
+}
+
+.form-input:disabled {
+  background: #f8f9fa;
+  color: #999;
+  border-color: #ddd;
+}
+
+.form-input:disabled::placeholder {
+  color: #bbb;
+}
+
+.password-container {
+  position: relative;
+}
+
+.password-container .form-input {
+  padding-right: 100rpx; /* 为显示/隐藏按钮留出空间 */
+}
+
+.password-toggle {
+  position: absolute;
+  right: 25rpx;
+  top: 25rpx;
+  color: #3498db;
+  font-size: 24rpx;
+  z-index: 10;
+}
+
+
+.login-btn {
+  width: 100%;
+  margin-top: 30rpx;
+  padding: 25rpx;
+  font-size: 32rpx;
+  font-weight: bold;
+  background: linear-gradient(135deg, #3498db 0%, #2980b9 100%);
+  color: white;
+  border: none;
+  border-radius: 12rpx;
+}
+
+.login-btn:active {
+  opacity: 0.8;
+}
+
+.login-btn.disabled {
+  background: #bdc3c7;
+  color: #7f8c8d;
+}
+
+.form-footer {
+  text-align: center;
+  margin-top: 30rpx;
+}
+
+.link-text {
+  color: #3498db;
+  font-size: 26rpx;
+}
+
+/* 通用按钮样式 */
+.btn-primary {
+  background: linear-gradient(135deg, #3498db 0%, #2980b9 100%);
+  color: white;
+  border: none;
+  border-radius: 12rpx;
+}
+
+.btn-primary:active {
+  opacity: 0.8;
+}
+
+.btn-primary.disabled {
+  background: #bdc3c7;
+  color: #7f8c8d;
+}

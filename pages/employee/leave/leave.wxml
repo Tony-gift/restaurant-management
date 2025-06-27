@@ -1,0 +1,87 @@
+<!--pages/employee/leave/leave.wxml-->
+<view class="container">
+  <view class="tabs">
+    <text class="tab-item {{activeTab === 0 ? 'active' : ''}}" bindtap="switchTab" data-tab="0">
+      请假申请
+    </text>
+    <text class="tab-item {{activeTab === 1 ? 'active' : ''}}" bindtap="switchTab" data-tab="1">
+      申请记录
+    </text>
+  </view>
+  
+  <!-- 请假申请表单 -->
+  <view class="tab-content" wx:if="{{activeTab === 0}}">
+    <view class="form-section">
+      <view class="form-group">
+        <text class="form-label">请假类型</text>
+        <picker bindchange="onLeaveTypeChange" value="{{leaveTypeIndex}}" range="{{leaveTypes}}">
+          <view class="picker-input">
+            {{leaveTypes[leaveTypeIndex] || '请选择请假类型'}}
+          </view>
+        </picker>
+      </view>
+      
+      <view class="form-group">
+        <text class="form-label">开始日期</text>
+        <picker mode="date" bindchange="onStartDateChange" value="{{startDate}}">
+          <view class="picker-input">
+            {{startDate || '请选择开始日期'}}
+          </view>
+        </picker>
+      </view>
+      
+      <view class="form-group">
+        <text class="form-label">结束日期</text>
+        <picker mode="date" bindchange="onEndDateChange" value="{{endDate}}">
+          <view class="picker-input">
+            {{endDate || '请选择结束日期'}}
+          </view>
+        </picker>
+      </view>
+      
+      <view class="form-group">
+        <text class="form-label">请假天数</text>
+        <view class="days-display">{{leaveDays}}天</view>
+      </view>
+      
+      <view class="form-group">
+        <text class="form-label">请假原因</text>
+        <textarea class="form-textarea" 
+                 placeholder="请输入请假原因" 
+                 value="{{leaveReason}}" 
+                 bindinput="onReasonInput"
+                 maxlength="200">
+        </textarea>
+        <text class="char-count">{{leaveReason.length}}/200</text>
+      </view>
+      
+      <button class="btn-primary submit-btn" bindtap="submitLeave">提交申请</button>
+    </view>
+  </view>
+  
+  <!-- 申请记录 -->
+  <view class="tab-content" wx:if="{{activeTab === 1}}">
+    <view class="records-list">
+      <view class="record-item" wx:for="{{leaveRecords}}" wx:key="id">
+        <view class="record-header">
+          <text class="record-type">{{item.type}}</text>
+          <text class="record-status {{item.status}}">{{item.statusText}}</text>
+        </view>
+        <view class="record-info">
+          <text class="record-date">{{item.startDate}} 至 {{item.endDate}}</text>
+          <text class="record-days">共{{item.days}}天</text>
+        </view>
+        <view class="record-reason">
+          <text class="reason-label">请假原因：</text>
+          <text class="reason-text">{{item.reason}}</text>
+        </view>
+        <view class="record-footer">
+          <text class="apply-time">申请时间：{{item.applyTime}}</text>
+          <view class="record-actions" wx:if="{{item.status === 'pending'}}">
+            <text class="action-btn cancel" bindtap="cancelLeave" data-id="{{item.id}}">撤销</text>
+          </view>
+        </view>
+      </view>
+    </view>
+  </view>
+</view>

@@ -1,0 +1,15 @@
+{
+	"version": "2.0.0",
+	"tasks": [
+		{
+			"label": "微信小程序预览",
+			"type": "shell",
+			"command": "echo",
+			"args": [
+				"微信小程序项目已创建完成。请使用微信开发者工具打开此项目进行预览和调试。"
+			],
+			"group": "build",
+			"problemMatcher": []
+		}
+	]
+}
