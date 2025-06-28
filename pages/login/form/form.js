@@ -59,33 +59,42 @@ Page({
       return
     }
     
-    // 模拟登录验证
+    const api = require('../../../utils/api')
+
     wx.showLoading({
       title: '登录中...'
     })
-    
-    setTimeout(() => {
-      wx.hideLoading()
-      
-      // 保存登录状态
-      const app = getApp()
-      app.globalData.isLoggedIn = true
-      app.globalData.userType = userType
-      app.globalData.userInfo = {
-        username: username,
-        userType: userType
-      }
-      
-      wx.showToast({
-        title: '登录成功',
-        icon: 'success'
+
+    api.login(username, password, userType)
+      .then(res => {
+        wx.hideLoading()
+
+        const app = getApp()
+        app.globalData.isLoggedIn = true
+        app.globalData.userType = res.userType
+        app.globalData.userInfo = {
+          username: username,
+          userId: res.userId,
+          userType: res.userType
+        }
+        wx.setStorageSync('token', res.token)
+
+        wx.showToast({
+          title: '登录成功',
+          icon: 'success'
+        })
+
+        setTimeout(() => {
+          this.navigateToHome()
+        }, 1500)
       })
-      
-      // 跳转到对应的首页
-      setTimeout(() => {
-        this.navigateToHome()
-      }, 1500)
-    }, 1000)
+      .catch(() => {
+        wx.hideLoading()
+        wx.showToast({
+          title: '登录失败',
+          icon: 'none'
+        })
+      })
   },
 
   navigateToHome: function() {
