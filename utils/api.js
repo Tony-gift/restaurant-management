@@ -32,8 +32,23 @@ function register(username, password, userType) {
   return request('POST', '/auth/register', { username, password, userType })
 }
 
+function punchAttendance(userId, timestamp, type) {
+  return request('POST', `/employees/${userId}/attendance`, { timestamp, type })
+}
+
+function applyFranchise(data) {
+  return request('POST', '/franchise/applications', data)
+}
+
+function applyRecruit(data) {
+  return request('POST', '/recruit/applications', data)
+}
+
 module.exports = {
   request,
   login,
-  register
+  register,
+  punchAttendance,
+  applyFranchise,
+  applyRecruit
 }

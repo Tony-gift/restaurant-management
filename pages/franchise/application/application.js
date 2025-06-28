@@ -83,34 +83,28 @@ Page({
     wx.showLoading({
       title: '提交中...'
     })
-    
-    // 模拟提交申请
-    setTimeout(() => {
-      wx.hideLoading()
-      
-      // 保存申请状态
-      const applicationData = {
-        ...formData,
-        submitTime: new Date().toLocaleString('zh-CN'),
-        status: 'pending'
-      }
-      
-      wx.setStorageSync('franchiseApplication', applicationData)
-      wx.setStorageSync('franchiseStatus', {
-        status: 'pending',
-        text: '审核中',
-        description: '您的加盟申请已提交，正在审核中'
+
+    const api = require('../../../utils/api')
+    api.applyFranchise(formData)
+      .then(() => {
+        wx.hideLoading()
+
+        wx.showModal({
+          title: '申请提交成功',
+          content: '您的加盟申请已提交，我们将在3个工作日内完成审核，请关注申请进度。',
+          showCancel: false,
+          success: () => {
+            wx.navigateBack()
+          }
+        })
       })
-      
-      wx.showModal({
-        title: '申请提交成功',
-        content: '您的加盟申请已提交，我们将在3个工作日内完成审核，请关注申请进度。',
-        showCancel: false,
-        success: () => {
-          wx.navigateBack()
-        }
+      .catch(() => {
+        wx.hideLoading()
+        wx.showToast({
+          title: '提交失败',
+          icon: 'none'
+        })
       })
-    }, 2000)
   },
 
   validateForm: function(formData) {
