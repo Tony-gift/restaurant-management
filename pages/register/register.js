@@ -99,26 +99,34 @@ Page({
       return
     }
     
-    // 模拟注册
+    const api = require('../../utils/api')
+
     wx.showLoading({
       title: '注册中...'
     })
-    
-    setTimeout(() => {
-      wx.hideLoading()
-      
-      wx.showToast({
-        title: '注册成功',
-        icon: 'success'
-      })
-      
-      // 注册成功后跳转到登录页
-      setTimeout(() => {
-        wx.navigateTo({
-          url: `/pages/login/form/form?type=${userType}`
+
+    api.register(username, password, userType)
+      .then(() => {
+        wx.hideLoading()
+
+        wx.showToast({
+          title: '注册成功',
+          icon: 'success'
         })
-      }, 1500)
-    }, 1000)
+
+        setTimeout(() => {
+          wx.navigateTo({
+            url: `/pages/login/form/form?type=${userType}`
+          })
+        }, 1500)
+      })
+      .catch(() => {
+        wx.hideLoading()
+        wx.showToast({
+          title: '注册失败',
+          icon: 'none'
+        })
+      })
   },
 
   goToLogin: function() {

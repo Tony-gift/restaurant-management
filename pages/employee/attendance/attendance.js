@@ -102,30 +102,52 @@ Page({
       hour: '2-digit',
       minute: '2-digit'
     })
-    const today = now.getDate()
-    
+    const app = getApp()
+    const userId = app.globalData.userInfo ? app.globalData.userInfo.userId : ''
+    if (!userId) {
+      wx.showToast({
+        title: '请重新登录',
+        icon: 'none'
+      })
+      return
+    }
+
+    const api = require('../../../utils/api')
+
     if (!this.data.punchInTime) {
-      // 上班打卡
-      this.setData({
-        punchInTime: currentTime
-      })
-      wx.setStorageSync(`punchIn_${today}`, currentTime)
-      
-      wx.showToast({
-        title: '上班打卡成功',
-        icon: 'success'
-      })
+      api.punchAttendance(userId, now.toISOString(), 'punchIn')
+        .then(() => {
+          this.setData({
+            punchInTime: currentTime
+          })
+          wx.showToast({
+            title: '上班打卡成功',
+            icon: 'success'
+          })
+        })
+        .catch(() => {
+          wx.showToast({
+            title: '打卡失败',
+            icon: 'none'
+          })
+        })
     } else if (!this.data.punchOutTime) {
-      // 下班打卡
-      this.setData({
-        punchOutTime: currentTime
-      })
-      wx.setStorageSync(`punchOut_${today}`, currentTime)
-      
-      wx.showToast({
-        title: '下班打卡成功',
-        icon: 'success'
-      })
+      api.punchAttendance(userId, now.toISOString(), 'punchOut')
+        .then(() => {
+          this.setData({
+            punchOutTime: currentTime
+          })
+          wx.showToast({
+            title: '下班打卡成功',
+            icon: 'success'
+          })
+        })
+        .catch(() => {
+          wx.showToast({
+            title: '打卡失败',
+            icon: 'none'
+          })
+        })
     }
   },
 

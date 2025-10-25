@@ -126,34 +126,28 @@ Page({
     wx.showLoading({
       title: '提交中...'
     })
-    
-    // 模拟提交申请
-    setTimeout(() => {
-      wx.hideLoading()
-      
-      // 保存申请状态
-      const applicationData = {
-        ...formData,
-        submitTime: new Date().toLocaleString('zh-CN'),
-        status: 'pending'
-      }
-      
-      wx.setStorageSync('recruitApplication', applicationData)
-      wx.setStorageSync('recruitStatus', {
-        status: 'pending',
-        text: '待审核',
-        description: '您的入职申请已提交，正在等待HR审核'
+
+    const api = require('../../../utils/api')
+    api.applyRecruit(formData)
+      .then(() => {
+        wx.hideLoading()
+
+        wx.showModal({
+          title: '申请提交成功',
+          content: '您的入职申请已提交，我们将在5个工作日内完成审核，请关注申请状态。',
+          showCancel: false,
+          success: () => {
+            wx.navigateBack()
+          }
+        })
       })
-      
-      wx.showModal({
-        title: '申请提交成功',
-        content: '您的入职申请已提交，我们将在5个工作日内完成审核，请关注申请状态。',
-        showCancel: false,
-        success: () => {
-          wx.navigateBack()
-        }
+      .catch(() => {
+        wx.hideLoading()
+        wx.showToast({
+          title: '提交失败',
+          icon: 'none'
+        })
       })
-    }, 2000)
   },
 
   validateForm: function(formData) {
